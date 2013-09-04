@@ -70,19 +70,19 @@ function generateTableRow() {
 
 	emptyColumn.innerHTML = '<td><a class="cut">-</a><span contenteditable></span></td>' +
 		'<td><span contenteditable></span></td>' +
-		'<td><span data-prefix>$</span><span contenteditable>0.00</span></td>' +
+		'<td><span data-prefix></span><span contenteditable>0</span></td>' +
 		'<td><span contenteditable>0</span></td>' +
-		'<td><span data-prefix>$</span><span>0.00</span></td>';
+		'<td><span data-prefix></span><span>0</span></td>';
 
 	return emptyColumn;
 }
 
 function parseFloatHTML(element) {
-	return parseFloat(element.innerHTML.replace(/[^\d\.\-]+/g, '')) || 0;
+	return parseFloat(element.innerHTML.replace(/[^\d\,\-]+/g, '')) || 0;
 }
 
 function parsePrice(number) {
-	return number.toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+	return accounting.formatMoney(number, 'Rp. ', '2', '.', ',');
 }
 
 /* Update Number
@@ -151,7 +151,7 @@ function updateInvoice() {
 	// update price formatting
 	// =======================
 
-	for (a = document.querySelectorAll('span[data-prefix] + span'), i = 0; a[i]; ++i) if (document.activeElement != a[i]) a[i].innerHTML = parsePrice(parseFloatHTML(a[i]));
+	for (a = document.querySelectorAll('span[data-prefix] + span'), i = 0; a[i]; ++i) if (document.activeElement != a[i])  a[i].innerHTML = parsePrice(parseFloatHTML(a[i]));
 }
 
 /* On Content Load
