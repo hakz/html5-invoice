@@ -145,8 +145,8 @@ function updateInvoice() {
 	// update prefix formatting
 	// ========================
 
-	var prefix = document.querySelector('#prefix').innerHTML;
-	for (a = document.querySelectorAll('[data-prefix]'), i = 0; a[i]; ++i) a[i].innerHTML = prefix;
+	// var prefix = document.querySelector('#prefix').innerHTML;
+	// for (a = document.querySelectorAll('[data-prefix]'), i = 0; a[i]; ++i) a[i].innerHTML = prefix;
 
 	// update price formatting
 	// =======================
